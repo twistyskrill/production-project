@@ -1,0 +1,18 @@
+{
+  "React Component": {
+    "prefix": "nvb",
+    "body": [
+      "interface ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}}Props {",
+      "  className?: string;",
+      "}",
+      "",
+      "export const $1 = ({ className }: $1Props) => {",
+      "  return (",
+      "    <div className={classNames(cls.$1, {}, [className])}>",
+      "    </div>",
+      "  );",
+      "};"
+    ],
+    "description": "React Component with PascalCase name"
+  }
+}
