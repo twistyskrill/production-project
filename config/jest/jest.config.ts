@@ -3,6 +3,8 @@
  * https://jestjs.io/docs/configuration
  */
 
+import path from "path";
+
 export default {
   // All imported modules in your tests should be mocked automatically
   // automock: false,
@@ -31,7 +33,9 @@ export default {
 
   // The root directory that Jest should scan for tests and modules within
   rootDir: "../../",
-
+  setupFilesAfterEnv: [`<rootDir>config/jest/setupTests.ts`],
+  //проблема в курсе была у меня все норм
+  modulePaths: [`<rootDir>src`],
   testEnvironment: "jsdom",
 
   // Options that will be passed to the testEnvironment
@@ -42,6 +46,10 @@ export default {
 
   // The glob patterns Jest uses to detect test files
   testMatch: [`<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)`],
+  moduleNameMapper: {
+    "\\.s?css$": "identity-obj-proxy",
+    "\\.svg": path.resolve(__dirname, "jestEmptyComponent.tsx"),
+  },
 
   // The directory where Jest should store its cached dependency information
   // cacheDirectory: "C:\\Users\\egork\\AppData\\Local\\Temp\\jest",
