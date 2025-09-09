@@ -1,5 +1,4 @@
 import React, { ErrorInfo, ReactNode, Suspense } from "react";
-import { withTranslation } from "react-i18next";
 import { PageError } from "widgets/PageError/ui/PageError";
 
 interface ErrorBoundaryProps {
@@ -24,18 +23,19 @@ class ErrorBoundary extends React.Component<
     return { hasError: true };
   }
 
-  componentDidCatch(error: Error, info: ErrorInfo) {
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     // You can also log the error to an error reporting service
-    console.log(error, info);
+    console.log(error, errorInfo);
   }
 
   render() {
     const { hasError } = this.state;
     const { children } = this.props;
+
     if (hasError) {
       // You can render any custom fallback UI
       return (
-        <Suspense fallback={""}>
+        <Suspense fallback="">
           <PageError />
         </Suspense>
       );

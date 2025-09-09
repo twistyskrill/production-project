@@ -1,14 +1,13 @@
-import "./styles/index.scss";
+import React, { Suspense } from "react";
 import { classNames } from "shared/lib/classNames/classNames";
-import { useTheme } from "./providers/ThemeProvider";
-import { AppRouter } from "./providers/router";
+import { useTheme } from "app/providers/ThemeProvider";
+import { AppRouter } from "app/providers/router";
 import { Navbar } from "widgets/Navbar";
 import { Sidebar } from "widgets/Sidebar";
-import { Suspense, useEffect } from "react";
-import { useTranslation } from "react-i18next";
 
-const App = () => {
+function App() {
   const { theme } = useTheme();
+
   return (
     <div className={classNames("app", {}, [theme])}>
       <Suspense fallback="">
@@ -20,6 +19,6 @@ const App = () => {
       </Suspense>
     </div>
   );
-};
+}
 
 export default App;
