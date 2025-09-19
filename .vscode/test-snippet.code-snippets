@@ -1,0 +1,13 @@
+{
+  "Redux Selector Test": {
+    "prefix": "jst",
+    "body": [
+      "describe('${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}}', () => {",
+      "  test('', () => {",
+      "    expect().toEqual();",
+      "  });",
+      "});"
+    ],
+    "description": "Create a Redux selector test with DeepPartial typing"
+  }
+}

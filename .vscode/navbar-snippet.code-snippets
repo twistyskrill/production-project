@@ -2,6 +2,9 @@
   "React Component": {
     "prefix": "nvb",
     "body": [
+      "import { classNames } from \"shared/lib/classNames/classNames\";",
+      "import cls from \"./${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}.module.scss\";",
+      "",
       "interface ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}}Props {",
       "  className?: string;",
       "}",
@@ -13,6 +16,6 @@
       "  );",
       "};"
     ],
-    "description": "React Component with PascalCase name"
+    "description": "React Component with PascalCase name and imports"
   }
 }
