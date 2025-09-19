@@ -4,14 +4,17 @@
     "body": [
       "import { classNames } from \"shared/lib/classNames/classNames\";",
       "import cls from \"./${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}.module.scss\";",
+      "import { useTranslation } from \"react-i18next\";",
       "",
       "interface ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}}Props {",
       "  className?: string;",
       "}",
       "",
       "export const $1 = ({ className }: $1Props) => {",
+      "  const { t } = useTranslation();",
       "  return (",
       "    <div className={classNames(cls.$1, {}, [className])}>",
+            "",
       "    </div>",
       "  );",
       "};"

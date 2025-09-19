@@ -1,4 +1,11 @@
 {
   "posts": [{ "id": 1, "title": "json-server", "author": "typicode" }],
-  "profile": [{ "name": "typicode" }]
+  "profile": [{ "name": "typicode" }],
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "123"
+    }
+  ]
 }
