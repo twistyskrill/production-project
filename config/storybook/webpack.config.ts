@@ -11,8 +11,8 @@ export default ({ config }: { config: webpack.Configuration }) => {
     src: path.resolve(__dirname, "../../src"),
   };
 
-  config.resolve?.modules?.push(paths.src);
-  config.resolve?.extensions?.push(".ts", ".tsx");
+  config!.resolve!.modules!.push(paths.src);
+  config!.resolve!.extensions!.push(".ts", ".tsx");
 
   // Убираем опциональную цепочку при присваивании
   if (config.module && config.module.rules) {

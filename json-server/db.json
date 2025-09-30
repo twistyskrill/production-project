@@ -28,8 +28,8 @@
   "profile": {
     "first": "Тимур",
     "lastname": "Ульби",
-    "age": 22,
-    "currency": "RUB",
+    "age": 20,
+    "currency": "USD",
     "country": "Russia",
     "city": "Moscow",
     "username": "admin",
