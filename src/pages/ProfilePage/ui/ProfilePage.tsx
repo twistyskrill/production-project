@@ -24,6 +24,7 @@ import { ProfilePageHeader } from "./ProfilePageHeader/ProfilePageHeader";
 import { Currency } from "entities/Currency";
 import { Country } from "entities/Country";
 import { Text, TextTheme } from "shared/ui/Text/Text";
+import { useParams } from "react-router-dom";
 
 const reducers: ReducersList = {
 	profile: profileReducer,
@@ -42,6 +43,7 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
 	const error = useSelector(getProfileError);
 	const readonly = useSelector(getProfileReadonly);
 	const validateErrors = useSelector(getProfileValidateErrors);
+	const { id } = useParams<{ id: string }>();
 
 	const validateErrorTranslates = {
 		[ValidateProfileError.SERVER_ERROR]: t("Серверная ошибка при сохранении"),
@@ -52,7 +54,9 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
 	};
 
 	useEffect(() => {
-		dispatch(fetchProfileData());
+		if (id) {
+			dispatch(fetchProfileData(id));
+		}
 	}, [dispatch]);
 
 	const onChangeFirstname = useCallback(
