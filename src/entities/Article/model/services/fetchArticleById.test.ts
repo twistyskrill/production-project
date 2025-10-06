@@ -1,9 +1,7 @@
 import { userActions } from "entities/User";
 import { TestAsyncThunk } from "shared/lib/tests/testAsyncThunk/testAsyncThunk";
-import { fetchArticleById } from "./fetchArticleById";
-import { Currency } from "entities/Currency";
-import { Country } from "entities/Country";
-import { Article } from "../../types/article";
+import { Article } from "../types/article";
+import { fetchArticleById } from "./fetchArticleById/fetchArticleById";
 
 const data: Article = {
 	id: "1",
@@ -11,6 +9,10 @@ const data: Article = {
 	views: 1765,
 	subtitle: "",
 	img: "",
+	user: {
+		id: "2",
+		username: "9mm",
+	},
 	createdAt: "",
 	type: [],
 	blocks: [],
