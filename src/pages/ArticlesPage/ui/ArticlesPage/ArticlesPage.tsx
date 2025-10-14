@@ -20,6 +20,7 @@ import {
 import {
 	getArticlesPageError,
 	getArticlesPageHasMore,
+	getArticlesPageInited,
 	getArticlesPageIsLoading,
 	getArticlesPageNum,
 	getArticlesPageView,
@@ -27,6 +28,7 @@ import {
 import { ArticleView, ArticleViewSelector } from "entities/Article";
 import { Page } from "shared/ui/Page/Page";
 import { fetchNextArticlesPage } from "pages/ArticlesPage/model/services/fetchNextArticlesPage/fetchNextArticlesPage";
+import { initArticlesPage } from "pages/ArticlesPage/model/services/initArticlesPage/initArticlesPage";
 
 interface ArticlesPageProps {
 	className?: string;
@@ -58,16 +60,11 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
 	}, [dispatch]);
 
 	useInitialEffect(() => {
-		dispatch(articlePageActions.initState());
-		dispatch(
-			fetchArticlesList({
-				page: 1,
-			})
-		);
+		dispatch(initArticlesPage());
 	});
 
 	return (
-		<DynamicModuleLoader reducers={reducers}>
+		<DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
 			<Page
 				onScrollEnd={onLoadNextPart}
 				className={classNames(cls.ArticlesPage, {}, [className])}
