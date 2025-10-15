@@ -15,6 +15,7 @@ import { LoginSchema } from "features/AuthByUsername";
 import { UISchema } from "features/UI";
 import {
 	ArticleDetailsCommentSchema,
+	ArticleDetailsPageSchema,
 	ArticleDetailsRecommendationSchema,
 } from "pages/ArticleDetailsPage";
 import { ArticlesPageSchema } from "pages/ArticlesPage";
@@ -28,10 +29,9 @@ export interface StateSchema {
 	loginForm?: LoginSchema;
 	profile?: ProfileSchema;
 	articleDetails?: ArticleDetailsSchema;
-	articleDetailsComments?: ArticleDetailsCommentSchema;
-	articleDetailsRecommendations?: ArticleDetailsRecommendationSchema;
 	addCommentForm?: AddCommentFormSchema;
 	articlesPage?: ArticlesPageSchema;
+	articleDetailsPage?: ArticleDetailsPageSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

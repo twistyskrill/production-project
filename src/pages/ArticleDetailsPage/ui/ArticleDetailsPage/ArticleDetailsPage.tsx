@@ -28,14 +28,15 @@ import {
 	getArticleRecommendations,
 } from "pages/ArticleDetailsPage/model/slices/articleDetailsPageRecomendationSlice";
 import { getArticleRecommendationsIsLoading } from "pages/ArticleDetailsPage/model/selectors/recommendations";
+import { fetchArticleRecommendations } from "pages/ArticleDetailsPage/model/services/fetchArticleRecommendations/fetchArticleRecommendations";
+import { articleDetailsPageReducer } from "pages/ArticleDetailsPage/model/slices";
 
 interface ArticleDetailsPageProps {
 	className?: string;
 }
 
 const reducers: ReducersList = {
-	articleDetailsComments: arcticleDetailsCommentsReducer,
-	articleDetailsRecommendations: articleDetailsPageRecomendationReducer,
+	articleDetailsPage: articleDetailsPageReducer,
 };
 
 const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
@@ -64,6 +65,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
 
 	useInitialEffect(() => {
 		dispatch(fetchCommentsByArticleId(id));
+		dispatch(fetchArticleRecommendations());
 	});
 
 	if (!id) {
@@ -89,6 +91,8 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
 				<ArticleList
 					articles={recommendations}
 					isLoading={recommendationsIsLoading}
+					className={cls.recommendations}
+					target="_blank"
 				/>
 				<Text
 					size={TextSize.L}

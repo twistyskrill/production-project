@@ -1,16 +1,17 @@
 import { classNames } from "shared/lib/classNames/classNames";
 import { useTranslation } from "react-i18next";
-import { memo } from "react";
+import { HTMLAttributeAnchorTarget, memo } from "react";
 import { ArticleListItemSkeleton } from "entities/Article/ui/ArticleListItem/ArticleListItemSkeleton";
+import { Text, TextSize } from "shared/ui/Text/Text";
 import { ArticleListItem } from "../ArticleListItem/ArticleListItem";
 import cls from "./ArticleList.module.scss";
 import { Article, ArticleView } from "../../model/types/article";
-import { Text, TextSize } from "shared/ui/Text/Text";
 
 interface ArticleListProps {
 	className?: string;
 	articles: Article[];
 	isLoading?: boolean;
+	target?: HTMLAttributeAnchorTarget;
 	view?: ArticleView;
 }
 
@@ -22,8 +23,18 @@ const getSkeletons = (view: ArticleView) =>
 		));
 
 export const ArticleList = memo((props: ArticleListProps) => {
-	const { className, articles, view = ArticleView.SMALL, isLoading } = props;
+	const {
+		className,
+		articles = [],
+		view = ArticleView.SMALL,
+		isLoading,
+		target,
+	} = props;
 	const { t } = useTranslation();
+
+	// ФИКС: Фильтруем валидные статьи ДО рендеринга
+	const validArticles =
+		articles?.filter((article) => article && article.id) || [];
 
 	const renderArticle = (article: Article) => (
 		<ArticleListItem
@@ -31,10 +42,12 @@ export const ArticleList = memo((props: ArticleListProps) => {
 			view={view}
 			className={cls.card}
 			key={article.id}
+			target={target}
 		/>
 	);
 
-	if (!isLoading && !articles.length) {
+	// ФИКС: Используем validArticles вместо articles
+	if (!isLoading && validArticles.length === 0) {
 		return (
 			<div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
 				<Text size={TextSize.L} title={t("Статьи не найдены")} />
@@ -44,7 +57,9 @@ export const ArticleList = memo((props: ArticleListProps) => {
 
 	return (
 		<div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
-			{articles.length > 0 ? articles.map(renderArticle) : null}
+			{validArticles.length > 0
+				? validArticles.map(renderArticle) // ФИКС: мапим validArticles
+				: null}
 			{isLoading && getSkeletons(view)}
 		</div>
 	);
