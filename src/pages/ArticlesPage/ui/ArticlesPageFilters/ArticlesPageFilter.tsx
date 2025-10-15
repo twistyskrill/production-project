@@ -22,7 +22,7 @@ import { Card } from "shared/ui/Card/Card";
 import { Input } from "shared/ui/Input/Input";
 import { SortOrder } from "shared/types";
 import { fetchArticlesList } from "pages/ArticlesPage/model/services/fetchArticlesList/fetchArticlesList";
-import { useDebounce } from "shared/lib/hooks/useDebounce /useDebounce";
+import { useDebounce } from "shared/lib/hooks/useDebounce/useDebounce";
 import { TabItem, Tabs } from "shared/ui/Tabs/Tabs";
 import { ArticleType } from "entities/Article/model/types/article";
 import { ArticleTypeTabs } from "entities/Article/ui/ArticleTypeTabs/ArticleTypeTabs";
