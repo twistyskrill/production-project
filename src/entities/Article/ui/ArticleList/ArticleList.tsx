@@ -1,11 +1,8 @@
 import { classNames } from "shared/lib/classNames/classNames";
 import { useTranslation } from "react-i18next";
 import { HTMLAttributeAnchorTarget, memo } from "react";
-import { ArticleListItemSkeleton } from "entities/Article/ui/ArticleListItem/ArticleListItemSkeleton";
+import { ArticleListItemSkeleton } from "../ArticleListItem/ArticleListItemSkeleton";
 import { Text, TextSize } from "shared/ui/Text/Text";
-import { ArticleListItem } from "../ArticleListItem/ArticleListItem";
-import cls from "./ArticleList.module.scss";
-import { Article, ArticleView } from "../../model/types/article";
 import {
 	AutoSizer,
 	List,
@@ -13,6 +10,9 @@ import {
 	WindowScroller,
 } from "react-virtualized";
 import { PAGE_ID } from "widgets/Page/Page";
+import { ArticleListItem } from "../ArticleListItem/ArticleListItem";
+import cls from "./ArticleList.module.scss";
+import { Article, ArticleView } from "../../model/types/article";
 
 interface ArticleListProps {
 	className?: string;
@@ -32,7 +32,7 @@ const getSkeletons = (view: ArticleView) =>
 export const ArticleList = memo((props: ArticleListProps) => {
 	const {
 		className,
-		articles = [],
+		articles,
 		view = ArticleView.SMALL,
 		isLoading,
 		target,
@@ -58,7 +58,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
 					view={view}
 					className={cls.card}
 					target={target}
-					key={"str" + i}
+					key={`str${i}`}
 				/>
 			);
 		}
@@ -70,12 +70,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
 		);
 	};
 
-	// ФИКС: Фильтруем валидные статьи ДО рендеринга
-	const validArticles =
-		articles?.filter((article) => article && article.id) || [];
-
-	// ФИКС: Используем validArticles вместо articles
-	if (!isLoading && validArticles.length === 0) {
+	if (!isLoading && !articles.length) {
 		return (
 			<div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
 				<Text size={TextSize.L} title={t("Статьи не найдены")} />
