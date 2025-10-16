@@ -7,28 +7,20 @@ import {
 	DynamicModuleLoader,
 	ReducersList,
 } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
-import { articleDetailsReducer } from "entities/Article/model/slice/articleDetailsSlice";
 import { useInitialEffect } from "shared/lib/hooks/useInitialEffect/useInitialEffect";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
-import { fetchArticlesList } from "pages/ArticlesPage/model/services/fetchArticlesList/fetchArticlesList";
 import { useSelector } from "react-redux";
 import {
-	articlePageActions,
 	articlePageReducer,
 	getArticles,
-} from "pages/ArticlesPage/model/slices/articlePageSlice";
+} from "../../model/slices/articlePageSlice";
 import {
-	getArticlesPageError,
-	getArticlesPageHasMore,
-	getArticlesPageInited,
 	getArticlesPageIsLoading,
-	getArticlesPageNum,
 	getArticlesPageView,
-} from "pages/ArticlesPage/model/selectors/articlesPageSelector";
-import { ArticleView, ArticleViewSelector } from "entities/Article";
+} from "../../model/selectors/articlesPageSelector";
 import { Page } from "widgets/Page/Page";
-import { fetchNextArticlesPage } from "pages/ArticlesPage/model/services/fetchNextArticlesPage/fetchNextArticlesPage";
-import { initArticlesPage } from "pages/ArticlesPage/model/services/initArticlesPage/initArticlesPage";
+import { fetchNextArticlesPage } from "../../model/services/fetchNextArticlesPage/fetchNextArticlesPage";
+import { initArticlesPage } from "../../model/services/initArticlesPage/initArticlesPage";
 import { ArticlesPageFilter } from "../ArticlesPageFilters/ArticlesPageFilter";
 import { useSearchParams } from "react-router-dom";
 
