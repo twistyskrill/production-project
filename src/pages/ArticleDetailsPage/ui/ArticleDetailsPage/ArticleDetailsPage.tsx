@@ -23,10 +23,7 @@ import { getArticleCommentsIsLoading } from "../../model/selectors/comments";
 import { Button, ButtonTheme } from "shared/ui/Button/Button";
 import { RoutePath } from "shared/config/routeConfig/routeConfig";
 import { Page } from "widgets/Page/Page";
-import {
-	articleDetailsPageRecomendationReducer,
-	getArticleRecommendations,
-} from "pages/ArticleDetailsPage/model/slices/articleDetailsPageRecomendationSlice";
+import { getArticleRecommendations } from "pages/ArticleDetailsPage/model/slices/articleDetailsPageRecomendationSlice";
 import { getArticleRecommendationsIsLoading } from "pages/ArticleDetailsPage/model/selectors/recommendations";
 import { fetchArticleRecommendations } from "pages/ArticleDetailsPage/model/services/fetchArticleRecommendations/fetchArticleRecommendations";
 import { articleDetailsPageReducer } from "pages/ArticleDetailsPage/model/slices";
