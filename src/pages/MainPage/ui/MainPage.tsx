@@ -13,26 +13,7 @@ const MainPage = () => {
 		setValue(val);
 	};
 
-	return (
-		<Page>
-			{t("Главная страница")}
-			<div>
-				<HStack>
-					<div> asdasd</div>
-					<LisBbox
-						defaultValue={"Выберите значение"}
-						onChange={(value: string) => {}}
-						value={undefined}
-						items={[
-							{ value: "1", content: "123" },
-							{ value: "2", content: "asd", disabled: true },
-							{ value: "3", content: "12fgfdgdfg3" },
-						]}
-					/>
-				</HStack>
-			</div>
-		</Page>
-	);
+	return <Page>{t("Главная страница")}</Page>;
 };
 
 export default MainPage;
