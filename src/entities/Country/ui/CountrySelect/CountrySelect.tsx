@@ -5,6 +5,7 @@ import { Select } from "shared/ui/Select/Select";
 import { Currency } from "entities/Currency/model/types/currency";
 import { memo, useCallback, useMemo } from "react";
 import { Country } from "../../model/types/country";
+import { LisBbox } from "shared/ui/ListBox/ListBox";
 
 interface CountrySelectProps {
 	className?: string;
@@ -33,13 +34,14 @@ export const CountrySelect = memo(
 		);
 
 		return (
-			<Select
-				className={classNames(cls.CurrencySelect, {}, [className])}
-				value={value}
+			<LisBbox
 				onChange={onChangeHandler}
-				label={t("Укажите страну")}
-				options={options}
+				value={value}
+				defaultValue={t("Укажите страну")}
+				items={options}
 				readonly={readonly}
+				direction={"top"}
+				label={t("Укажите страну")}
 			/>
 		);
 	}
