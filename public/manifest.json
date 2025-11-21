@@ -1,0 +1,23 @@
+{
+	"name": "Quantflow Terminal",
+	"short_name": "Quantflow",
+	"start_url": "/terminal",
+	"display": "standalone",
+	"background_color": "#050914",
+	"theme_color": "#00d395",
+	"description": "Realtime trading sandbox with mock data",
+	"icons": [
+		{
+			"src": "/icons/quantflow-192.svg",
+			"sizes": "192x192",
+			"type": "image/svg+xml",
+			"purpose": "any"
+		},
+		{
+			"src": "/icons/quantflow-512.svg",
+			"sizes": "512x512",
+			"type": "image/svg+xml",
+			"purpose": "any"
+		}
+	]
+}

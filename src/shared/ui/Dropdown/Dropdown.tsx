@@ -20,27 +20,36 @@ interface DropdownProps {
 	direction?: DropdownDirection;
 }
 
-const mapDirectionClass: Record<DropdownDirection, string> = {
-	"bottom left": cls.optionsBottomLeft,
-	"bottom right": cls.optionsBottomRight,
-	"top left": cls.optionsTopLeft,
-	"top right": cls.optionsTopRight,
+const getDirectionClass = (direction: DropdownDirection): string => {
+	if (!cls) return "";
+	const map: Record<DropdownDirection, keyof typeof cls> = {
+		"bottom left": "optionsBottomLeft",
+		"bottom right": "optionsBottomRight",
+		"top left": "optionsTopLeft",
+		"top right": "optionsTopRight",
+	};
+	return cls[map[direction]] || "";
 };
 
 export function Dropdown(props: DropdownProps) {
 	const { className, trigger, items, direction = "bottom right" } = props;
 
-	const menuClasses = [mapDirectionClass[direction]];
+	const menuClasses = [getDirectionClass(direction)];
 	return (
-		<Menu as={"div"} className={classNames(cls.Dropdown, {}, [className])}>
-			<Menu.Button className={cls.btn}>{trigger}</Menu.Button>
-			<Menu.Items className={classNames(cls.menu, {}, menuClasses)}>
+		<Menu
+			as={"div"}
+			className={classNames(cls?.Dropdown || "", {}, [className])}
+		>
+			<Menu.Button className={cls?.btn || ""}>{trigger}</Menu.Button>
+			<Menu.Items className={classNames(cls?.menu || "", {}, menuClasses)}>
 				{items.map((item) => {
 					const content = ({ active }: { active: boolean }) => (
 						<button
 							type="button"
 							onClick={item.onClick}
-							className={classNames(cls.item, { [cls.active]: active })}
+							className={classNames(cls?.item || "", {
+								[cls?.active || ""]: active,
+							})}
 							disabled={item.disabled}
 						>
 							{item.content}

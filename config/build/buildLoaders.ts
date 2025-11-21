@@ -1,7 +1,6 @@
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import webpack from "webpack";
 import { BuildOptions } from "./types/config";
-import { buildCssLoader } from "./loaders/buildCssLoader";
 import { buildBabelLoader } from "./loaders/buildBabelLoader";
 
 export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
@@ -18,12 +17,91 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
 			},
 		],
 	};
+	// CSS модули (должен быть ПЕРВЫМ, чтобы обработать .module.scss файлы)
+	const cssModulesLoader = {
+		test: /\.module\.s[ac]ss$/i,
+		exclude: /node_modules/,
+		use: [
+			isDev
+				? {
+						loader: "style-loader",
+						options: {
+							injectType: "styleTag",
+							insert: "head",
+						},
+				  }
+				: MiniCssExtractPlugin.loader,
+			{
+				loader: "css-loader",
+				options: {
+					modules: {
+						mode: "local",
+						localIdentName: isDev
+							? "[path][name]__[local]--[hash:base64:5]"
+							: "[hash:base64:8]",
+						exportLocalsConvention: "camelCase",
+					},
+					sourceMap: isDev,
+					esModule: false,
+				},
+			},
+			{
+				loader: "sass-loader",
+				options: {
+					implementation: require("sass"),
+					sourceMap: isDev,
+				},
+			},
+		],
+	};
+
 	const babelLoader = buildBabelLoader(options);
-	const cssLoader = buildCssLoader(isDev);
+
+	// Обычные SCSS файлы (без .module.)
+	const cssLoader = {
+		test: /\.s[ac]ss$/i,
+		exclude: [/node_modules/, /\.module\.s[ac]ss$/i],
+		use: [
+			isDev
+				? {
+						loader: "style-loader",
+						options: {
+							injectType: "styleTag",
+							insert: "head",
+						},
+				  }
+				: MiniCssExtractPlugin.loader,
+			{
+				loader: "css-loader",
+				options: {
+					sourceMap: isDev,
+				},
+			},
+			{
+				loader: "sass-loader",
+				options: {
+					implementation: require("sass"),
+					sourceMap: isDev,
+				},
+			},
+		],
+	};
+
 	const typescriptLoader = {
 		test: /\.tsx?$/,
 		use: "ts-loader",
 		exclude: /node_modules/,
 	};
-	return [fileLoader, svgLoader, babelLoader, typescriptLoader, cssLoader];
+
+	// Важно: cssModulesLoader должен быть ПЕРЕД cssLoader и typescriptLoader
+	// Порядок имеет значение - webpack обрабатывает правила сверху вниз
+	// CSS loaders должны быть ПЕРВЫМИ, чтобы не перехватывались другими loaders
+	return [
+		cssModulesLoader, // Сначала обрабатываем CSS модули
+		cssLoader, // Затем обычные SCSS файлы
+		fileLoader,
+		svgLoader,
+		babelLoader,
+		typescriptLoader,
+	];
 }

@@ -1,0 +1,12 @@
+.PositionsFilters {
+	display: grid;
+	grid-template-columns: 1fr 200px 200px;
+	gap: 12px;
+	align-items: center;
+	margin-bottom: 12px;
+}
+
+.statusGroup {
+	display: flex;
+	gap: 8px;
+}

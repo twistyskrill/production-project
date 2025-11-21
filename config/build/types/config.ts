@@ -7,6 +7,10 @@ export interface BuildPaths {
 	src: string;
 	locales: string;
 	buildLocales: string;
+	manifest: string;
+	buildAssets: string;
+	publicAssets: string;
+	serviceWorker: string;
 }
 
 export interface BuildEnv {

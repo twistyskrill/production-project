@@ -4,19 +4,33 @@
 	background: var(--inverted-bg-color);
 	display: flex;
 	align-items: center;
-	padding: 20px;
+	justify-content: space-between;
+	padding: 12px 24px;
+	position: sticky;
+	top: 0;
+	z-index: 10;
 }
 
-.links,
-.dropdown {
-	margin-left: auto;
+.brand {
+	display: flex;
+	flex-direction: column;
+	font-size: 14px;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
 }
 
-.mainLink {
-	margin-right: 15px;
+.brand strong {
+	font-size: 18px;
 }
 
-.appName {
-	width: var(--sidebar-width);
-	margin-left: 15px;
+.navLinks {
+	display: flex;
+	gap: 16px;
+}
+
+.metrics {
+	display: flex;
+	gap: 16px;
+	font-size: 12px;
+	text-transform: uppercase;
 }

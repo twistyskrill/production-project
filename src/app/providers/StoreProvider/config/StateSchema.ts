@@ -1,37 +1,24 @@
-import {
-	CombinedState,
-	EnhancedStore,
-	Reducer,
-	ReducersMapObject,
-} from "@reduxjs/toolkit";
-import { ToolkitStore } from "@reduxjs/toolkit/dist/configureStore";
+import { EnhancedStore, Reducer, ReducersMapObject } from "@reduxjs/toolkit";
+import { Store } from "@reduxjs/toolkit";
 import { AxiosInstance } from "axios";
-import { ArticleDetailsSchema } from "entities/Article";
-import { CounterSchema } from "entities/Counter";
-import { ProfileSchema } from "entities/Profile";
 import { UserSchema } from "entities/User";
-import { AddCommentFormSchema } from "features/addCommentForm";
-import { LoginSchema } from "features/AuthByUsername";
 import { UISchema } from "features/UI";
-import {
-	ArticleDetailsCommentSchema,
-	ArticleDetailsPageSchema,
-	ArticleDetailsRecommendationSchema,
-} from "pages/ArticleDetailsPage";
-import { ArticlesPageSchema } from "pages/ArticlesPage";
-import { NavigateOptions, To } from "react-router-dom";
+import { OrdersSchema } from "entities/order";
+import { PositionsSchema } from "entities/position";
+import { MarketSchema } from "entities/market";
+import { AnalyticsSchema } from "entities/analytics";
+import { SettingsSchema } from "entities/settings";
+import { tradingApi } from "entities/trading";
 
 export interface StateSchema {
-	counter: CounterSchema;
 	user: UserSchema;
 	ui: UISchema;
-	//Ассинхронные редюсоры
-	loginForm?: LoginSchema;
-	profile?: ProfileSchema;
-	articleDetails?: ArticleDetailsSchema;
-	addCommentForm?: AddCommentFormSchema;
-	articlesPage?: ArticlesPageSchema;
-	articleDetailsPage?: ArticleDetailsPageSchema;
+	orders: OrdersSchema;
+	positions: PositionsSchema;
+	market: MarketSchema;
+	analytics: AnalyticsSchema;
+	settings: SettingsSchema;
+	[tradingApi.reducerPath]: ReturnType<typeof tradingApi.reducer>;
 }
 
 export type StateSchemaKey = keyof StateSchema;
@@ -39,13 +26,13 @@ export type MountedReducers = OptionalRecord<StateSchemaKey, boolean>;
 
 export interface ReducerManager {
 	getReducerMap: () => ReducersMapObject<StateSchema>;
-	reduce: (state: StateSchema, action: any) => CombinedState<StateSchema>;
+	reduce: (state: StateSchema | undefined, action: any) => StateSchema;
 	add: (key: StateSchemaKey, reducer: Reducer) => void;
 	remove: (key: StateSchemaKey) => void;
 	getMountedReducers: () => MountedReducers;
 }
 
-export interface ReduxStoreWithManager extends ToolkitStore<StateSchema> {
+export interface ReduxStoreWithManager extends Store<StateSchema> {
 	reducerManager: ReducerManager;
 }
 

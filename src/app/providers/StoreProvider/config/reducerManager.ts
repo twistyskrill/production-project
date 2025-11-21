@@ -19,13 +19,14 @@ export function createReducerManager(
 	return {
 		getReducerMap: () => reducers,
 		getMountedReducers: () => mountedReducers,
-		reduce: (state: StateSchema, action: any) => {
-			if (keysToRemove.length > 0) {
-				state = { ...state };
+		reduce: (state: StateSchema | undefined, action: any) => {
+			if (keysToRemove.length > 0 && state) {
+				const newState = { ...state };
 				keysToRemove.forEach((key) => {
-					delete state[key];
+					delete newState[key];
 				});
 				keysToRemove = [];
+				return combinedReducer(newState, action);
 			}
 
 			return combinedReducer(state, action);

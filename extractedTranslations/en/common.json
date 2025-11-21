@@ -1,0 +1,10 @@
+{
+	"nav.terminal": "Terminal",
+	"nav.analytics": "Analytics",
+	"nav.settings": "Settings",
+	"nav.tagline": "Realtime trading cockpit",
+	"nav.latency": "Latency",
+	"nav.throughput": "Feed",
+	"nav.locale": "Locale"
+}
+

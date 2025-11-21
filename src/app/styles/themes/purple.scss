@@ -1,21 +1,13 @@
 .app_purple_theme {
-	--bg-color: #f6f4fb;
-	--inverted-bg-color: #23015f;
-	--primary-color: #592fa2;
-	--secondary-color: #000f47;
-	--inverted-primary-color: #dbd5dc;
-	--inverted-secondary-color: #f6f4fb;
-
-	//skeleton
-	--skeleton-color: #ffffff;
-	--skeleton-shadow: rgba(0 0 0/20%);
-
-	//code
-	--code-bg: #fff;
-
-	//card
-	--card-bg: #d5d5d7;
-
-	//listbox
-	--listbox-bg: #d5d5d7;
+	--bg-color: #120023;
+	--inverted-bg-color: #fdf7ff;
+	--primary-color: #fdf7ff;
+	--secondary-color: #c8a7ff;
+	--inverted-primary-color: #2d0a4d;
+	--inverted-secondary-color: #845ef7;
+	--skeleton-color: #2d0a4d;
+	--skeleton-shadow: rgba(0, 0, 0, 0.35);
+	--code-bg: #1f0339;
+	--card-bg: #1b0730;
+	--listbox-bg: #2b0c48;
 }

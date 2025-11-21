@@ -11,6 +11,10 @@ export default (env: BuildEnv) => {
 		src: path.resolve(__dirname, "src"),
 		locales: path.resolve(__dirname, "public", "locales"),
 		buildLocales: path.resolve(__dirname, "build", "locales"),
+		manifest: path.resolve(__dirname, "public", "manifest.json"),
+		publicAssets: path.resolve(__dirname, "public", "icons"),
+		buildAssets: path.resolve(__dirname, "build", "icons"),
+		serviceWorker: path.resolve(__dirname, "public", "service-worker.js"),
 	};
 
 	const mode = env.mode || "development";

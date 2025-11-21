@@ -1,26 +1,28 @@
 {
 	"compilerOptions": {
-		"outDir": "./dist/",
-		"noImplicitAny": true,
+		"target": "ES2020",
 		"module": "ESNext",
-		"target": "es5",
+		"lib": ["DOM", "DOM.Iterable", "ES2020"],
 		"jsx": "react-jsx",
-		"allowJs": true,
-		"strict": true,
 		"moduleResolution": "node",
 		"esModuleInterop": true,
 		"allowSyntheticDefaultImports": true,
+		"skipLibCheck": true,
+		"strict": true,
+		"noImplicitAny": true,
+		"resolveJsonModule": true,
 		"baseUrl": ".",
 		"paths": {
 			"*": ["./src/*"]
 		},
-		"types": ["jest", "node"]
+		"types": ["jest", "node"],
+		"useUnknownInCatchVariables": false,
+		"forceConsistentCasingInFileNames": true
 	},
-	"ts-node": { "compilerOptions": { "module": "commonjs" } },
-	"include": [
-		"./config/jest/setupTests.ts",
-		"./src/**/*.ts",
-		"./src/**/*.tsx",
-		"src/entities/Article/model/services/fetchArticleById"
-	]
+	"ts-node": {
+		"compilerOptions": {
+			"module": "commonjs"
+		}
+	},
+	"include": ["./config/jest/setupTests.ts", "./src/**/*"]
 }

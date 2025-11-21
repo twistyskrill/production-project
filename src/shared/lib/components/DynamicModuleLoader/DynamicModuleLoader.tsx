@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { FC, useEffect } from "react";
+import React, { FC, useEffect } from "react";
 import { useDispatch, useStore } from "react-redux";
 import { ReduxStoreWithManager } from "app/providers/StoreProvider";
 import {
@@ -15,6 +15,7 @@ export type ReducersList = {
 interface DynamicModuleLoaderProps {
 	reducers: ReducersList;
 	removeAfterUnmount?: boolean;
+	children: React.ReactNode;
 }
 
 export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = (props) => {

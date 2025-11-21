@@ -1,0 +1,43 @@
+{
+	"orders": {
+		"title": "Размещение ордера",
+		"symbol": "Инструмент",
+		"side": "Сторона",
+		"type": "Тип",
+		"quantity": "Объем",
+		"price": "Цена",
+		"stopPrice": "Стоп-цена",
+		"comment": "Комментарий",
+		"tif": "Время действия",
+		"submit": "Проверить ордер",
+		"confirmationTitle": "Подтвердите ордер",
+		"confirm": "Подтвердить",
+		"cancel": "Отмена",
+		"history": "Последние ордера",
+		"required": "Обязательное поле",
+		"volumeError": "Объем должен быть больше нуля",
+		"priceRequired": "Цена обязательна",
+		"stopPriceRequired": "Стоп-цена обязательна",
+		"pricePositive": "Цена должна быть положительной",
+		"submitting": "Отправка...",
+		"status": {
+			"filled": "Исполнен",
+			"rejected": "Отклонен",
+			"sent": "Отправлен",
+			"pending": "В ожидании"
+		}
+	},
+	"positions": {
+		"title": "Открытые позиции",
+		"close": "Закрыть",
+		"summary": "{{count}} результатов · обновлено {{time}}"
+	},
+	"market": {
+		"stream": "Поток",
+		"live": "В сети",
+		"offline": "Оффлайн",
+		"latency": "Задержка",
+		"throughput": "Пропускная способность",
+		"updatesPerSec": "обн/с"
+	}
+}

@@ -1,0 +1,62 @@
+{
+  "market": {
+    "latency": "latency",
+    "live": "live",
+    "offline": "offline",
+    "stream": "stream",
+    "throughput": "throughput",
+    "updatesPerSec": "updatesPerSec"
+  },
+  "orders": {
+    "cancel": "cancel",
+    "comment": "comment",
+    "confirm": "confirm",
+    "confirmationTitle": "confirmationTitle",
+    "history": "history",
+    "price": "price",
+    "pricePositive": "pricePositive",
+    "priceRequired": "priceRequired",
+    "quantity": "quantity",
+    "required": "required",
+    "side": "side",
+    "status": {
+      "filled": "filled",
+      "pending": "pending",
+      "rejected": "rejected",
+      "sent": "sent"
+    },
+    "stopPrice": "stopPrice",
+    "stopPriceRequired": "stopPriceRequired",
+    "submit": "submit",
+    "submitting": "submitting",
+    "symbol": "symbol",
+    "tif": "tif",
+    "title": "title",
+    "type": "type",
+    "volumeError": "volumeError"
+  },
+  "orders.cancel": "Отмена",
+  "orders.comment": "Комментарий",
+  "orders.confirm": "Подтвердить",
+  "orders.confirmationTitle": "Подтвердите ордер",
+  "orders.history": "Последние ордера",
+  "orders.price": "Цена",
+  "orders.pricePositive": "Цена должна быть положительной",
+  "orders.priceRequired": "Цена обязательна",
+  "orders.quantity": "Объем",
+  "orders.required": "Обязательное поле",
+  "orders.side": "Сторона",
+  "orders.submit": "Проверить ордер",
+  "orders.submitting": "Отправка...",
+  "orders.symbol": "Инструмент",
+  "orders.tif": "Время действия",
+  "orders.title": "Размещение ордера",
+  "orders.type": "Тип",
+  "orders.volumeError": "Объем должен быть больше нуля",
+  "positions": {
+    "close": "close",
+    "summary": "summary",
+    "title": "title"
+  }
+}
+

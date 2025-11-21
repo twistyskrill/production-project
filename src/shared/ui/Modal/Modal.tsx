@@ -71,8 +71,8 @@ export const Modal = (props: ModalProps) => {
 	}, [isOpen, onKeyDown]);
 
 	const mods: Mods = {
-		[cls.opened]: isOpen,
-		[cls.isClosing]: isClosing,
+		[cls?.opened || ""]: isOpen,
+		[cls?.isClosing || ""]: isClosing,
 	};
 
 	if (lazy && !isMounted) {
@@ -82,10 +82,14 @@ export const Modal = (props: ModalProps) => {
 	return (
 		<Portal>
 			<div
-				className={classNames(cls.Modal, mods, [className, theme, "app_modal"])}
+				className={classNames(cls?.Modal || "", mods, [
+					className,
+					theme,
+					"app_modal",
+				])}
 			>
-				<div className={cls.overlay} onClick={closeHandler}>
-					<div className={cls.content} onClick={onContentClick}>
+				<div className={cls?.overlay || ""} onClick={closeHandler}>
+					<div className={cls?.content || ""} onClick={onContentClick}>
 						{children}
 					</div>
 				</div>

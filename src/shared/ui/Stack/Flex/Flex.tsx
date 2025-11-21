@@ -1,36 +1,51 @@
 import { classNames, Mods } from "shared/lib/classNames/classNames";
 import cls from "./Flex.module.scss";
-import { useTranslation } from "react-i18next";
-import { DetailedHTMLProps, HTMLAttributes, memo, ReactNode } from "react";
+import { memo, ReactNode } from "react";
 
 export type FlexJustify = "start" | "center" | "end" | "between";
 export type FlexAlign = "start" | "center" | "end";
 export type FlexDirection = "row" | "column";
 export type FlexGap = "4" | "8" | "16" | "32";
 
-const justifyClasses: Record<FlexJustify, string> = {
-	start: cls.justifyStart,
-	center: cls.justifyCenter,
-	end: cls.justifyEnd,
-	between: cls.justifyBetween,
+const getJustifyClass = (justify: FlexJustify): string => {
+	if (!cls) return "";
+	const map: Record<FlexJustify, keyof typeof cls> = {
+		start: "justifyStart",
+		center: "justifyCenter",
+		end: "justifyEnd",
+		between: "justifyBetween",
+	};
+	return cls[map[justify]] || "";
 };
 
-const alignClasses: Record<FlexAlign, string> = {
-	start: cls.aligntart,
-	center: cls.alignCenter,
-	end: cls.alignEnd,
+const getAlignClass = (align: FlexAlign): string => {
+	if (!cls) return "";
+	const map: Record<FlexAlign, keyof typeof cls> = {
+		start: "alignStart",
+		center: "alignCenter",
+		end: "alignEnd",
+	};
+	return cls[map[align]] || "";
 };
 
-const directionClasses: Record<FlexDirection, string> = {
-	row: cls.directionRow,
-	column: cls.directionColumn,
+const getDirectionClass = (direction: FlexDirection): string => {
+	if (!cls) return "";
+	const map: Record<FlexDirection, keyof typeof cls> = {
+		row: "directionRow",
+		column: "directionColumn",
+	};
+	return cls[map[direction]] || "";
 };
 
-const gapClasses: Record<FlexGap, string> = {
-	4: cls.gap4,
-	8: cls.gap8,
-	16: cls.gap16,
-	32: cls.gap32,
+const getGapClass = (gap: FlexGap): string => {
+	if (!cls) return "";
+	const map: Record<FlexGap, keyof typeof cls> = {
+		"4": "gap4",
+		"8": "gap8",
+		"16": "gap16",
+		"32": "gap32",
+	};
+	return cls[map[gap]] || "";
 };
 
 export interface FlexProps {
@@ -53,19 +68,20 @@ export const Flex = memo((props: FlexProps) => {
 		gap,
 		max,
 	} = props;
-	const { t } = useTranslation();
 
 	const classes = [
 		className,
-		justifyClasses[justify],
-		alignClasses[align],
-		directionClasses[direction],
-		gap && gapClasses[gap],
-	];
+		getJustifyClass(justify),
+		getAlignClass(align),
+		getDirectionClass(direction),
+		gap && getGapClass(gap),
+	].filter(Boolean);
 
 	const mods: Mods = {
-		[cls.max]: max,
+		[cls?.max || ""]: max,
 	};
 
-	return <div className={classNames(cls.Flex, mods, classes)}>{children}</div>;
+	return (
+		<div className={classNames(cls?.Flex || "", mods, classes)}>{children}</div>
+	);
 });

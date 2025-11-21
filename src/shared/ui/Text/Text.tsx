@@ -49,14 +49,14 @@ export const Text = memo((props: TextProps) => {
 
 	const HeaderTag = mapSizeToHeaderTag[size];
 	const mods: Mods = {
-		[cls[theme]]: true,
-		[cls[align]]: true,
-		[cls[size]]: true,
+		[cls?.[theme] || ""]: true,
+		[cls?.[align] || ""]: true,
+		[cls?.[size] || ""]: true,
 	};
 	return (
-		<div className={classNames(cls.Text, mods, [className])}>
-			{title && <HeaderTag className={cls.title}>{title}</HeaderTag>}
-			{text && <p className={cls.text}>{text}</p>}
+		<div className={classNames(cls?.Text || "", mods, [className])}>
+			{title && <HeaderTag className={cls?.title || ""}>{title}</HeaderTag>}
+			{text && <p className={cls?.text || ""}>{text}</p>}
 		</div>
 	);
 });

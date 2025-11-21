@@ -1,0 +1,35 @@
+{
+	"filters": {
+		"live": "Live",
+		"paused": "Paused",
+		"benchmark": {
+			"label": "Benchmark",
+			"spx": "S&P 500",
+			"ndx": "NASDAQ 100",
+			"btc": "BTC"
+		}
+	},
+	"performance": {
+		"title": "Performance",
+		"period": "Period {{period}}",
+		"quantflow": "Quantflow",
+		"benchmark": "Benchmark"
+	},
+	"portfolio": {
+		"title": "Portfolio mix"
+	},
+	"history": {
+		"title": "Trade history",
+		"rows": "{{count}} rows",
+		"date": "Date",
+		"symbol": "Symbol",
+		"side": "Side",
+		"quantity": "Qty",
+		"price": "Price",
+		"pnl": "P&L"
+	},
+	"export": {
+		"button": "Export CSV",
+		"preparing": "Preparing…"
+	}
+}

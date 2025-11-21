@@ -1,0 +1,38 @@
+{
+  "export": {
+    "button": "button",
+    "preparing": "preparing"
+  },
+  "filters": {
+    "benchmark": {
+      "btc": "btc",
+      "label": "label",
+      "ndx": "ndx",
+      "spx": "spx"
+    },
+    "live": "live",
+    "paused": "paused"
+  },
+  "history": {
+    "date": "date",
+    "pnl": "pnl",
+    "price": "price",
+    "quantity": "quantity",
+    "rows": "rows",
+    "rows_0": "rows_0",
+    "rows_1": "rows_1",
+    "rows_2": "rows_2",
+    "side": "side",
+    "symbol": "symbol",
+    "title": "title"
+  },
+  "performance": {
+    "benchmark": "benchmark",
+    "period": "period",
+    "quantflow": "quantflow",
+    "title": "title"
+  },
+  "portfolio": {
+    "title": "title"
+  }
+}

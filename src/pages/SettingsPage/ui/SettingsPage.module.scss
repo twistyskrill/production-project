@@ -1,0 +1,29 @@
+.SettingsPage {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+	gap: 16px;
+}
+
+.card {
+	border: 1px solid rgba(255, 255, 255, 0.06);
+	border-radius: 16px;
+	padding: 16px;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.watchlist {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.watchlistItem {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 8px;
+	background: rgba(255, 255, 255, 0.03);
+	border-radius: 8px;
+}

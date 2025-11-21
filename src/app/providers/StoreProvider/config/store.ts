@@ -1,16 +1,15 @@
-import {
-	CombinedState,
-	configureStore,
-	Reducer,
-	ReducersMapObject,
-} from "@reduxjs/toolkit";
-import { counterReducer } from "entities/Counter";
+import { configureStore, Reducer, ReducersMapObject } from "@reduxjs/toolkit";
 import { userReducer } from "entities/User";
 import { StateSchema, ThunkExtraArg } from "./StateSchema";
 import { createReducerManager } from "./reducerManager";
 import { $api } from "shared/api/api";
-import { NavigateOptions, To } from "react-router-dom";
 import { uiReducer } from "features/UI";
+import { ordersReducer } from "entities/order";
+import { positionsReducer } from "entities/position";
+import { marketReducer } from "entities/market";
+import { analyticsReducer } from "entities/analytics";
+import { settingsReducer } from "entities/settings";
+import { tradingApi } from "entities/trading";
 
 export function createReduxStore(
 	initialState?: StateSchema,
@@ -18,9 +17,14 @@ export function createReduxStore(
 ) {
 	const rootReducers: ReducersMapObject<StateSchema> = {
 		...asyncReducers,
-		counter: counterReducer,
 		user: userReducer,
 		ui: uiReducer,
+		orders: ordersReducer,
+		positions: positionsReducer,
+		market: marketReducer,
+		analytics: analyticsReducer,
+		settings: settingsReducer,
+		[tradingApi.reducerPath]: tradingApi.reducer,
 	};
 
 	const reducerManager = createReducerManager(rootReducers);
@@ -30,7 +34,7 @@ export function createReduxStore(
 	};
 
 	const store = configureStore({
-		reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,
+		reducer: reducerManager.reduce as Reducer<StateSchema>,
 		devTools: __IS_DEV__,
 		preloadedState: initialState,
 		middleware: (getDefaultMiddleware) =>
@@ -38,7 +42,7 @@ export function createReduxStore(
 				thunk: {
 					extraArgument: extraArg,
 				},
-			}),
+			}).concat(tradingApi.middleware),
 	});
 	//@ts-ignore
 	store.reducerManager = reducerManager;

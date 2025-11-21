@@ -1,0 +1,35 @@
+{
+	"filters": {
+		"live": "В эфире",
+		"paused": "Приостановлено",
+		"benchmark": {
+			"label": "Бенчмарк",
+			"spx": "S&P 500",
+			"ndx": "NASDAQ 100",
+			"btc": "BTC"
+		}
+	},
+	"performance": {
+		"title": "Производительность",
+		"period": "Период {{period}}",
+		"quantflow": "Quantflow",
+		"benchmark": "Бенчмарк"
+	},
+	"portfolio": {
+		"title": "Состав портфеля"
+	},
+	"history": {
+		"title": "История сделок",
+		"rows": "{{count}} записей",
+		"date": "Дата",
+		"symbol": "Символ",
+		"side": "Сторона",
+		"quantity": "Кол-во",
+		"price": "Цена",
+		"pnl": "P&L"
+	},
+	"export": {
+		"button": "Экспорт CSV",
+		"preparing": "Подготовка…"
+	}
+}

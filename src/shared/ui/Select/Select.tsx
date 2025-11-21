@@ -27,7 +27,7 @@ export const Select = <T extends string>(props: SelectProps<T>) => {
 
 	const optionList = useMemo(() => {
 		return options?.map((opt) => (
-			<option className={cls.option} value={opt.value} key={opt.value}>
+			<option className={cls?.option || ""} value={opt.value} key={opt.value}>
 				{opt.content}
 			</option>
 		));
@@ -36,12 +36,12 @@ export const Select = <T extends string>(props: SelectProps<T>) => {
 	const mods: Mods = {};
 
 	return (
-		<div className={classNames(cls.Wrapper, mods, [className])}>
-			{label && <span className={cls.label}>{label + ">"}</span>}
+		<div className={classNames(cls?.Wrapper || "", mods, [className])}>
+			{label && <span className={cls?.label || ""}>{label + ">"}</span>}
 			<select
 				value={value}
 				onChange={onChangeHandler}
-				className={cls.select}
+				className={cls?.select || ""}
 				disabled={readonly}
 			>
 				{optionList}

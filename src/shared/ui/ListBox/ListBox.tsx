@@ -23,11 +23,15 @@ interface ListBoxProps {
 	label?: string;
 }
 
-const mapDirectionClass: Record<DropdownDirection, string> = {
-	"bottom left": cls.optionsBottomLeft,
-	"bottom right": cls.optionsBottomRight,
-	"top left": cls.optionsTopLeft,
-	"top right": cls.optionsTopRight,
+const getDirectionClass = (direction: DropdownDirection): string => {
+	if (!cls) return "";
+	const map: Record<DropdownDirection, keyof typeof cls> = {
+		"bottom left": "optionsBottomLeft",
+		"bottom right": "optionsBottomRight",
+		"top left": "optionsTopLeft",
+		"top right": "optionsTopRight",
+	};
+	return cls[map[direction]] || "";
 };
 export function LisBbox(props: ListBoxProps) {
 	const {
@@ -41,22 +45,22 @@ export function LisBbox(props: ListBoxProps) {
 		label,
 	} = props;
 
-	const optionsClasses = [mapDirectionClass[direction]];
+	const optionsClasses = [getDirectionClass(direction)];
 	return (
 		<HStack gap="4">
 			{label && <span>{label + ">"}</span>}
 			<HListBox
 				disabled={readonly}
-				className={classNames(cls.ListBox, {}, [className])}
+				className={classNames(cls?.ListBox || "", {}, [className])}
 				as={"div"}
 				value={value}
 				onChange={onChange}
 			>
-				<HListBox.Button disabled={readonly} className={cls.trigger}>
-					<Button disabled={readonly}>{value ?? defaultValue}</Button>
+				<HListBox.Button className={cls?.trigger || ""}>
+					{value ?? defaultValue}
 				</HListBox.Button>
 				<HListBox.Options
-					className={classNames(cls.options, {}, optionsClasses)}
+					className={classNames(cls?.options || "", {}, optionsClasses)}
 				>
 					{items?.map((item) => (
 						<HListBox.Option
@@ -67,9 +71,9 @@ export function LisBbox(props: ListBoxProps) {
 						>
 							{({ active, selected }) => (
 								<li
-									className={classNames(cls.item, {
-										[cls.active]: active,
-										[cls.disabled]: item.disabled,
+									className={classNames(cls?.item || "", {
+										[cls?.active || ""]: active,
+										[cls?.disabled || ""]: item.disabled,
 									})}
 								>
 									{selected && "!!!"}

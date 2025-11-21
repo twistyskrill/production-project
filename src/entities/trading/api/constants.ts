@@ -1,0 +1,42 @@
+export const SYMBOLS = [
+	"AAPL",
+	"MSFT",
+	"NVDA",
+	"GOOGL",
+	"AMZN",
+	"META",
+	"TSLA",
+	"NFLX",
+	"AMD",
+	"INTC",
+	"CRM",
+	"SNOW",
+	"SPY",
+	"QQQ",
+	"IWM",
+	"GLD",
+	"SLV",
+	"USO",
+	"EURUSD",
+	"GBPUSD",
+	"USDJPY",
+	"XAUUSD",
+	"BTCUSD",
+	"ETHUSD",
+	"BNBUSD",
+	"NQ=F",
+	"ES=F",
+	"CL=F",
+	"NG=F",
+];
+
+export const STRATEGIES = [
+	"Macro",
+	"Event-driven",
+	"Market Making",
+	"Stat Arb",
+	"Momentum",
+	"Options Overlay",
+];
+
+export const PORTFOLIOS = ["Alpha", "Beta", "Gamma", "Delta"];

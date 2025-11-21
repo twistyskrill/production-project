@@ -13,10 +13,16 @@ export function buildWebpackConfig(
 		mode,
 		entry: paths.entry,
 		output: {
-			filename: "[name].[contenthash].js",
+			filename: isDev ? "[name].js" : "[name].[contenthash].js",
+			chunkFilename: isDev
+				? "[name].chunk.js"
+				: "[name].[contenthash].chunk.js",
 			path: paths.build,
-			clean: true,
+			clean: !isDev,
 			publicPath: "/",
+			assetModuleFilename: isDev
+				? "assets/[name][ext]"
+				: "assets/[name].[contenthash][ext]",
 		},
 		plugins: buildPlugins(options),
 		module: {

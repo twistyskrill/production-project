@@ -1,0 +1,62 @@
+{
+  "market": {
+    "latency": "Latency",
+    "live": "Live",
+    "offline": "Offline",
+    "stream": "Stream",
+    "throughput": "Throughput",
+    "updatesPerSec": "upd/s"
+  },
+  "orders": {
+    "cancel": "Cancel",
+    "comment": "Comment",
+    "confirm": "Confirm",
+    "confirmationTitle": "Confirm order",
+    "history": "Recent orders",
+    "price": "Price",
+    "pricePositive": "Price > 0",
+    "priceRequired": "Price is required",
+    "quantity": "Quantity",
+    "required": "Required",
+    "side": "Side",
+    "status": {
+      "filled": "Filled",
+      "pending": "Pending",
+      "rejected": "Rejected",
+      "sent": "Sent"
+    },
+    "stopPrice": "Stop price",
+    "stopPriceRequired": "Stop price is required",
+    "submit": "Review order",
+    "submitting": "Submitting...",
+    "symbol": "Symbol",
+    "tif": "Time in force",
+    "title": "Order placement",
+    "type": "Type",
+    "volumeError": "Volume > 0"
+  },
+  "orders.cancel": "Cancel",
+  "orders.comment": "Comment",
+  "orders.confirm": "Confirm",
+  "orders.confirmationTitle": "Confirm order",
+  "orders.history": "Recent orders",
+  "orders.price": "Price",
+  "orders.pricePositive": "Price must be positive",
+  "orders.priceRequired": "Price is required",
+  "orders.quantity": "Quantity",
+  "orders.required": "Required",
+  "orders.side": "Side",
+  "orders.submit": "Review order",
+  "orders.submitting": "Submitting...",
+  "orders.symbol": "Symbol",
+  "orders.tif": "Time in force",
+  "orders.title": "Order placement",
+  "orders.type": "Type",
+  "orders.volumeError": "Volume must be positive",
+  "positions": {
+    "close": "Close",
+    "summary": "{{count}} results · refreshed {{time}}",
+    "title": "Open positions"
+  }
+}
+

@@ -1,0 +1,43 @@
+{
+	"orders": {
+		"title": "Order placement",
+		"symbol": "Symbol",
+		"side": "Side",
+		"type": "Type",
+		"quantity": "Quantity",
+		"price": "Price",
+		"stopPrice": "Stop price",
+		"comment": "Comment",
+		"tif": "Time in force",
+		"submit": "Review order",
+		"confirmationTitle": "Confirm order",
+		"confirm": "Confirm",
+		"cancel": "Cancel",
+		"history": "Recent orders",
+		"required": "Required",
+		"volumeError": "Volume must be positive",
+		"priceRequired": "Price is required",
+		"stopPriceRequired": "Stop price is required",
+		"pricePositive": "Price must be positive",
+		"submitting": "Submitting...",
+		"status": {
+			"filled": "Filled",
+			"rejected": "Rejected",
+			"sent": "Sent",
+			"pending": "Pending"
+		}
+	},
+	"positions": {
+		"title": "Open positions",
+		"close": "Close",
+		"summary": "{{count}} results · refreshed {{time}}"
+	},
+	"market": {
+		"stream": "Stream",
+		"live": "Live",
+		"offline": "Offline",
+		"latency": "Latency",
+		"throughput": "Throughput",
+		"updatesPerSec": "upd/s"
+	}
+}
