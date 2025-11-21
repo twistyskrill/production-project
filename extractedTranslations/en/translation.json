@@ -6,6 +6,7 @@
   "nav": {
     "latency": "Latency",
     "locale": "Locale",
+    "login": "Login",
     "tagline": "Realtime trading cockpit",
     "throughput": "Feed"
   },

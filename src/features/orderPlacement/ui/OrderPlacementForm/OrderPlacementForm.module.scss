@@ -1,17 +1,45 @@
 .OrderPlacementForm {
 	display: flex;
 	flex-direction: column;
-	gap: 12px;
-	padding: 16px;
-	background: rgba(255, 255, 255, 0.02);
-	border: 1px solid rgba(255, 255, 255, 0.06);
-	border-radius: 16px;
-	height: 100%;
+	gap: 16px;
+	padding: 24px;
+	background: var(--card-bg);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 20px;
+	flex: 1;
+	min-height: 0;
+	backdrop-filter: blur(10px);
+	box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+	transition: all 0.3s ease;
+	overflow-y: auto;
+	width: 100%;
+	box-sizing: border-box;
+
+	&:hover {
+		border-color: rgba(0, 211, 149, 0.3);
+		box-shadow: 0 8px 32px rgba(0, 211, 149, 0.1);
+	}
 }
 
 .fieldRow {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 12px;
+	width: 100%;
+	box-sizing: border-box;
+	align-items: center;
+}
+
+.fieldRow > * {
+	width: 100%;
+	min-width: 0;
 	display: flex;
-	gap: 8px;
+	align-items: center;
+	height: 100%;
+}
+
+.fieldRow > * > * {
+	width: 100%;
 }
 
 .history {
@@ -43,8 +71,11 @@
 
 .actions {
 	display: flex;
-	gap: 8px;
+	gap: 12px;
 	align-items: center;
+	justify-content: flex-start;
+	width: 100%;
+	flex-wrap: wrap;
 }
 
 .error {

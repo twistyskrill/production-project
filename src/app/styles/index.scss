@@ -13,23 +13,66 @@
 .app {
 	background: var(--bg-color);
 	min-height: 100vh;
+	position: relative;
+	overflow-x: hidden;
+
+	&::before {
+		content: "";
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: radial-gradient(
+			ellipse at top,
+			rgba(0, 211, 149, 0.05) 0%,
+			transparent 50%
+		);
+		pointer-events: none;
+		z-index: 0;
+	}
 }
 
 .content-page {
 	display: flex;
+	position: relative;
+	z-index: 1;
+	margin-top: var(--navbar-height);
 }
 
 *::-webkit-scrollbar {
-	width: 12px; /* ширина scrollbar */
+	width: 10px;
 	height: 8px;
 }
 
 *::-webkit-scrollbar-track {
-	background: var(--card-bg); /* цвет дорожки */
+	background: var(--card-bg);
+	border-radius: 10px;
 }
 
 *::-webkit-scrollbar-thumb {
-	background-color: var(--inverted-primary-color); /* цвет плашки */
-	border-radius: 20px; /* закругления плашки */
-	border: 2px solid var(--primary-color); /* padding вокруг плашки */
+	background: linear-gradient(135deg, #00d395 0%, #00a8ff 100%);
+	border-radius: 10px;
+	border: 2px solid var(--card-bg);
+	transition: all 0.3s ease;
+
+	&:hover {
+		background: linear-gradient(135deg, #00a8ff 0%, #00d395 100%);
+	}
+}
+
+/* Smooth transitions for all interactive elements */
+button,
+a,
+input,
+select,
+textarea {
+	transition: all 0.3s ease;
+}
+
+/* Focus styles */
+*:focus-visible {
+	outline: 2px solid #00d395;
+	outline-offset: 2px;
+	border-radius: 4px;
 }

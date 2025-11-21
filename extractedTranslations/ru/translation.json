@@ -6,6 +6,7 @@
   "nav": {
     "latency": "latency",
     "locale": "locale",
+    "login": "login",
     "tagline": "tagline",
     "throughput": "throughput"
   },

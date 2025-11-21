@@ -1,9 +1,34 @@
 {
-	"nav.terminal": "Терминал",
-	"nav.analytics": "Аналитика",
-	"nav.settings": "Настройки",
-	"nav.tagline": "Платформа для торговли",
-	"nav.latency": "Задержка",
-	"nav.throughput": "Поток",
-	"nav.locale": "Язык"
+  "auth": {
+    "demoHint": "demoHint",
+    "error": "error",
+    "fillAll": "fillAll",
+    "invalidCredentials": "invalidCredentials",
+    "loading": "loading",
+    "login": "login",
+    "loginSubtitle": "loginSubtitle",
+    "password": "password",
+    "tagline": "tagline",
+    "username": "username"
+  },
+  "nav.analytics": "Аналитика",
+  "nav.latency": "Задержка",
+  "nav.locale": "Язык",
+  "nav.settings": "Настройки",
+  "nav.tagline": "Платформа для торговли",
+  "nav.terminal": "Терминал",
+  "nav.throughput": "Поток",
+  "profile": {
+    "bio": "bio",
+    "email": "email",
+    "logout": "logout",
+    "memberSince": "memberSince",
+    "notAuthorized": "notAuthorized",
+    "personalInfo": "personalInfo",
+    "phone": "phone",
+    "save": "save",
+    "totalPnl": "totalPnl",
+    "totalTrades": "totalTrades",
+    "winRate": "winRate"
+  }
 }

@@ -6,6 +6,32 @@
 		"tagline": "Realtime trading cockpit",
 		"latency": "Latency",
 		"throughput": "Feed",
-		"locale": "Locale"
+		"locale": "Locale",
+		"login": "Login"
+	},
+	"auth": {
+		"login": "Sign In",
+		"loginSubtitle": "Enter your credentials to continue",
+		"username": "Username",
+		"password": "Password",
+		"fillAll": "Please fill all fields",
+		"invalidCredentials": "Invalid username or password",
+		"error": "Login failed. Please try again.",
+		"loading": "Loading...",
+		"tagline": "Trading Platform",
+		"demoHint": "Demo credentials: admin/123 or user/123"
+	},
+	"profile": {
+		"notAuthorized": "Not authorized",
+		"memberSince": "Member since 2024",
+		"logout": "Logout",
+		"personalInfo": "Personal Information",
+		"email": "Email",
+		"phone": "Phone",
+		"bio": "Bio",
+		"save": "Save Changes",
+		"totalTrades": "Total Trades",
+		"totalPnl": "Total P&L",
+		"winRate": "Win Rate"
 	}
 }

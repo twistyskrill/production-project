@@ -1,0 +1,138 @@
+.LoginPage {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	background: linear-gradient(135deg, var(--bg-color) 0%, var(--card-bg) 100%);
+	position: relative;
+	overflow: hidden;
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: -50%;
+		right: -50%;
+		width: 200%;
+		height: 200%;
+		background: radial-gradient(
+			circle,
+			rgba(0, 211, 149, 0.1) 0%,
+			transparent 70%
+		);
+		animation: pulse 20s ease-in-out infinite;
+	}
+
+	@keyframes pulse {
+		0%,
+		100% {
+			transform: scale(1);
+			opacity: 0.5;
+		}
+		50% {
+			transform: scale(1.1);
+			opacity: 0.8;
+		}
+	}
+}
+
+.loginContainer {
+	position: relative;
+	z-index: 1;
+	width: 100%;
+	max-width: 420px;
+	padding: 20px;
+}
+
+.loginCard {
+	background: var(--card-bg);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 24px;
+	padding: 40px;
+	backdrop-filter: blur(10px);
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+	animation: slideUp 0.5s ease-out;
+
+	@keyframes slideUp {
+		from {
+			opacity: 0;
+			transform: translateY(20px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+}
+
+.logo {
+	text-align: center;
+	margin-bottom: 32px;
+
+	strong {
+		background: linear-gradient(135deg, #00d395 0%, #00a8ff 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		font-size: 32px;
+		font-weight: 700;
+		display: block;
+		margin-bottom: 8px;
+	}
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.loginButton {
+	width: 100%;
+	margin-top: 8px;
+	padding: 14px;
+	font-size: 16px;
+	font-weight: 600;
+	background: linear-gradient(135deg, #00d395 0%, #00a8ff 100%);
+	border: none;
+	transition: all 0.3s ease;
+
+	&:hover:not(:disabled) {
+		transform: translateY(-2px);
+		box-shadow: 0 8px 24px rgba(0, 211, 149, 0.4);
+	}
+
+	&:active:not(:disabled) {
+		transform: translateY(0);
+	}
+}
+
+.error {
+	color: #ff4976;
+	font-size: 14px;
+	padding: 12px;
+	background: rgba(255, 73, 118, 0.1);
+	border: 1px solid rgba(255, 73, 118, 0.3);
+	border-radius: 8px;
+	text-align: center;
+	animation: shake 0.5s ease;
+
+	@keyframes shake {
+		0%,
+		100% {
+			transform: translateX(0);
+		}
+		25% {
+			transform: translateX(-10px);
+		}
+		75% {
+			transform: translateX(10px);
+		}
+	}
+}
+
+.hint {
+	margin-top: 16px;
+	text-align: center;
+	opacity: 0.6;
+	font-size: 12px;
+}

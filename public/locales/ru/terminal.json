@@ -39,5 +39,14 @@
 		"latency": "Задержка",
 		"throughput": "Пропускная способность",
 		"updatesPerSec": "обн/с"
+	},
+	"stats": {
+		"title": "Быстрая статистика",
+		"totalPnl": "Общий P&L",
+		"openPositions": "Открытые позиции",
+		"portfolioValue": "Стоимость портфеля",
+		"connection": "Подключение",
+		"live": "В сети",
+		"offline": "Оффлайн"
 	}
 }

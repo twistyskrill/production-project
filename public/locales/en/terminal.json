@@ -39,5 +39,14 @@
 		"latency": "Latency",
 		"throughput": "Throughput",
 		"updatesPerSec": "upd/s"
+	},
+	"stats": {
+		"title": "Quick Stats",
+		"totalPnl": "Total P&L",
+		"openPositions": "Open Positions",
+		"portfolioValue": "Portfolio Value",
+		"connection": "Connection",
+		"live": "Live",
+		"offline": "Offline"
 	}
 }

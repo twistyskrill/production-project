@@ -1,9 +1,18 @@
 .AnalyticsPage {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-	gap: 16px;
+	grid-template-columns: 1fr 1fr;
+	gap: 24px;
+	width: 100%;
+	box-sizing: border-box;
 }
 
 .fullWidth {
 	grid-column: 1 / -1;
+	width: 100%;
+}
+
+@media (max-width: 1200px) {
+	.AnalyticsPage {
+		grid-template-columns: 1fr;
+	}
 }

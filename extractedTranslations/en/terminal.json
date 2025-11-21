@@ -57,6 +57,15 @@
     "close": "Close",
     "summary": "{{count}} results · refreshed {{time}}",
     "title": "Open positions"
+  },
+  "stats": {
+    "connection": "Connection",
+    "live": "Live",
+    "offline": "Offline",
+    "openPositions": "Open Positions",
+    "portfolioValue": "Portfolio Value",
+    "title": "Quick Stats",
+    "totalPnl": "Total P&L"
   }
 }
 

@@ -1,6 +1,7 @@
 import { memo, useState } from "react";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
+import i18n from "shared/config/i18n/i18n";
 import { Page } from "widgets/Page/Page";
 import { Select } from "shared/ui/Select/Select";
 import { Input } from "shared/ui/Input/Input";
