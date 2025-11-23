@@ -1,0 +1,129 @@
+.OrderBook {
+	padding: 16px;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	height: calc(100vh - var(--navbar-height) - 48px);
+	min-height: 500px;
+	max-height: calc(100vh - var(--navbar-height) - 48px);
+	background: var(--card-bg);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 20px;
+	backdrop-filter: blur(10px);
+	box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+	position: sticky;
+	top: calc(var(--navbar-height) + 24px);
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-bottom: 12px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.spread {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 12px;
+}
+
+.spreadLabel {
+	color: rgba(255, 255, 255, 0.6);
+}
+
+.spreadValue {
+	color: var(--primary-color);
+	font-weight: 600;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	flex: 1;
+	overflow-y: auto;
+
+	&::-webkit-scrollbar {
+		width: 6px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: rgba(255, 255, 255, 0.05);
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: rgba(255, 255, 255, 0.2);
+		border-radius: 3px;
+	}
+}
+
+.asks,
+.bids {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+
+.headerRow {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 8px;
+	padding: 8px 4px;
+	font-size: 11px;
+	font-weight: 600;
+	color: rgba(255, 255, 255, 0.5);
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+.row {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 8px;
+	padding: 6px 4px;
+	font-size: 13px;
+	cursor: pointer;
+	transition: background 0.2s ease;
+	border-radius: 4px;
+
+	&:hover {
+		background: rgba(255, 255, 255, 0.05) !important;
+	}
+}
+
+.priceAsk {
+	color: #ff4976;
+	font-weight: 600;
+	text-align: left;
+}
+
+.priceBid {
+	color: #00d395;
+	font-weight: 600;
+	text-align: left;
+}
+
+.quantity,
+.total {
+	color: rgba(255, 255, 255, 0.8);
+	text-align: right;
+}
+
+.midPrice {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 8px;
+	margin: 4px 0;
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.midPriceValue {
+	font-size: 16px;
+	font-weight: 700;
+	color: var(--primary-color);
+}

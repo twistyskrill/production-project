@@ -1,0 +1,49 @@
+.TechnicalIndicators {
+	padding: 24px;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 20px;
+	padding-bottom: 16px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.indicatorsSummary {
+	display: flex;
+	gap: 24px;
+}
+
+.indicatorItem {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 14px;
+}
+
+.label {
+	color: rgba(255, 255, 255, 0.6);
+}
+
+.value {
+	font-weight: 700;
+	font-size: 16px;
+}
+
+.signal {
+	font-size: 12px;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+
+.chart {
+	margin-bottom: 20px;
+}
+
+.rsiChart {
+	margin-top: 20px;
+	padding-top: 20px;
+	border-top: 1px solid rgba(255, 255, 255, 0.06);
+}

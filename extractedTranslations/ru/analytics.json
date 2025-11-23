@@ -1,4 +1,9 @@
 {
+  "calendar": {
+    "loss": "loss",
+    "profitable": "profitable",
+    "title": "title"
+  },
   "export": {
     "button": "button",
     "preparing": "preparing"
@@ -26,6 +31,10 @@
     "symbol": "symbol",
     "title": "title"
   },
+  "indicators": {
+    "rsi": "rsi",
+    "title": "title"
+  },
   "performance": {
     "benchmark": "benchmark",
     "period": "period",
@@ -34,5 +43,14 @@
   },
   "portfolio": {
     "title": "title"
+  },
+  "symbolStats": {
+    "best": "best",
+    "filled": "filled",
+    "orders": "orders",
+    "pnl": "pnl",
+    "symbol": "symbol",
+    "title": "title",
+    "winRate": "winRate"
   }
 }

@@ -1,5 +1,6 @@
 import { classNames } from "shared/lib/classNames/classNames";
 import { useTranslation } from "react-i18next";
+import i18n from "shared/config/i18n/i18n";
 import React from "react";
 import { Button, ButtonTheme } from "../Button/Button";
 
@@ -9,7 +10,7 @@ interface LangSwitcherProps {
 }
 
 export const LangSwitcher = ({ className, short }: LangSwitcherProps) => {
-	const { t, i18n } = useTranslation();
+	const { t } = useTranslation();
 
 	const toggle = async () => {
 		i18n.changeLanguage(i18n.language === "ru" ? "en" : "ru");

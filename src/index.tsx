@@ -32,7 +32,9 @@ try {
 	console.error("Failed to render app:", error);
 }
 
-// Регистрируем service worker только в production
-if ("serviceWorker" in navigator && !__IS_DEV__) {
-	registerServiceWorker();
+// Регистрируем service worker (в dev режиме тоже для тестирования)
+if ("serviceWorker" in navigator) {
+	registerServiceWorker().catch((error) => {
+		console.warn("Failed to register service worker:", error);
+	});
 }

@@ -9,6 +9,7 @@ import { Select } from "shared/ui/Select/Select";
 import { Modal } from "shared/ui/Modal/Modal";
 import { Text } from "shared/ui/Text/Text";
 import {
+	Order,
 	OrderDraft,
 	OrderSide,
 	OrderStatus,
@@ -24,6 +25,8 @@ import {
 import { usePlaceOrderMutation } from "entities/trading/api/tradingApi";
 import { mockTradingApi } from "entities/trading/api/mockTradingApi";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
+import { useOfflineStatus } from "shared/lib/pwa/useOfflineStatus";
+import { addOrderToQueue } from "shared/lib/pwa/offlineQueue";
 import cls from "./OrderPlacementForm.module.scss";
 
 const orderTypeOptions = [
@@ -51,6 +54,7 @@ export const OrderPlacementForm = memo(() => {
 	const history = useSelector(getOrderHistory);
 	const submitting = useSelector(getOrdersSubmitting);
 	const error = useSelector(getOrderError);
+	const { isOnline } = useOfflineStatus();
 	const [placeOrder] = usePlaceOrderMutation();
 
 	const {
@@ -78,6 +82,31 @@ export const OrderPlacementForm = memo(() => {
 			return;
 		}
 		dispatch(orderActions.setSubmitting(true));
+
+		// Если оффлайн, добавляем в очередь
+		if (!isOnline) {
+			try {
+				const queueId = await addOrderToQueue(confirmation);
+				dispatch(orderActions.setOrderError(undefined));
+				// Создаем временный ордер для отображения
+				const queuedOrder: Order = {
+					...confirmation,
+					id: queueId,
+					status: OrderStatus.PENDING,
+					createdAt: new Date().toISOString(),
+					updatedAt: new Date().toISOString(),
+				};
+				dispatch(orderActions.pushOrder(queuedOrder));
+				dispatch(orderActions.closeConfirmation());
+				return;
+			} catch (err) {
+				dispatch(
+					orderActions.setOrderError("Failed to queue order. Please try again.")
+				);
+				return;
+			}
+		}
+
 		try {
 			const result = await placeOrder(confirmation).unwrap();
 			const order = result.order;
@@ -201,38 +230,14 @@ export const OrderPlacementForm = memo(() => {
 			</div>
 
 			{draft.type === OrderType.LIMIT && (
-				<Controller
-					control={control}
-					name="price"
-					rules={{
-						required: t("orders.priceRequired", "Price is required") as string,
-						min: {
-							value: 0.01,
-							message: t("orders.pricePositive", "Price > 0"),
-						},
-					}}
-					render={({ field }) => (
-						<Input
-							type="number"
-							step="0.01"
-							value={field.value ?? ""}
-							onChange={(value) =>
-								field.onChange(value ? Number(value) : undefined)
-							}
-							placeholder={t("orders.price", "Price")}
-						/>
-					)}
-				/>
-			)}
-			{draft.type === OrderType.STOP && (
-				<>
+				<div className={cls?.fieldRow || ""}>
 					<Controller
 						control={control}
-						name="stopPrice"
+						name="price"
 						rules={{
 							required: t(
-								"orders.stopPriceRequired",
-								"Stop price is required"
+								"orders.priceRequired",
+								"Price is required"
 							) as string,
 							min: {
 								value: 0.01,
@@ -247,18 +252,23 @@ export const OrderPlacementForm = memo(() => {
 								onChange={(value) =>
 									field.onChange(value ? Number(value) : undefined)
 								}
-								placeholder={t("orders.stopPrice", "Stop price")}
+								placeholder={t("orders.price", "Price")}
 							/>
 						)}
 					/>
-					{draft.stopPrice && (
+					<div></div>
+				</div>
+			)}
+			{draft.type === OrderType.STOP && (
+				<>
+					<div className={cls?.fieldRow || ""}>
 						<Controller
 							control={control}
-							name="price"
+							name="stopPrice"
 							rules={{
 								required: t(
-									"orders.priceRequired",
-									"Price is required"
+									"orders.stopPriceRequired",
+									"Stop price is required"
 								) as string,
 								min: {
 									value: 0.01,
@@ -273,38 +283,70 @@ export const OrderPlacementForm = memo(() => {
 									onChange={(value) =>
 										field.onChange(value ? Number(value) : undefined)
 									}
-									placeholder={t("orders.price", "Limit price")}
+									placeholder={t("orders.stopPrice", "Stop price")}
 								/>
 							)}
 						/>
+						<div></div>
+					</div>
+					{draft.stopPrice && (
+						<div className={cls?.fieldRow || ""}>
+							<Controller
+								control={control}
+								name="price"
+								rules={{
+									required: t(
+										"orders.priceRequired",
+										"Price is required"
+									) as string,
+									min: {
+										value: 0.01,
+										message: t("orders.pricePositive", "Price > 0"),
+									},
+								}}
+								render={({ field }) => (
+									<Input
+										type="number"
+										step="0.01"
+										value={field.value ?? ""}
+										onChange={(value) =>
+											field.onChange(value ? Number(value) : undefined)
+										}
+										placeholder={t("orders.price", "Limit price")}
+									/>
+								)}
+							/>
+							<div></div>
+						</div>
 					)}
 				</>
 			)}
 
-			<Controller
-				control={control}
-				name="timeInForce"
-				render={({ field }) => (
-					<Select
-						label={t("orders.tif", "Time in force")}
-						options={timeInForceOptions}
-						value={field.value}
-						onChange={(value) => field.onChange(value as OrderTimeInForce)}
-					/>
-				)}
-			/>
-
-			<Controller
-				control={control}
-				name="comment"
-				render={({ field }) => (
-					<Input
-						placeholder={t("orders.comment", "Comment")}
-						value={field.value ?? ""}
-						onChange={(value) => field.onChange(value)}
-					/>
-				)}
-			/>
+			<div className={cls?.fieldRow || ""}>
+				<Controller
+					control={control}
+					name="timeInForce"
+					render={({ field }) => (
+						<Select
+							label={t("orders.tif", "Time in force")}
+							options={timeInForceOptions}
+							value={field.value}
+							onChange={(value) => field.onChange(value as OrderTimeInForce)}
+						/>
+					)}
+				/>
+				<Controller
+					control={control}
+					name="comment"
+					render={({ field }) => (
+						<Input
+							placeholder={t("orders.comment", "Comment")}
+							value={field.value ?? ""}
+							onChange={(value) => field.onChange(value)}
+						/>
+					)}
+				/>
+			</div>
 
 			<div className={cls?.actions || ""}>
 				<Button type="submit" disabled={submitting}>

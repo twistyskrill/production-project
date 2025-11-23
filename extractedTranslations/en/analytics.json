@@ -1,4 +1,9 @@
 {
+  "calendar": {
+    "loss": "Loss",
+    "profitable": "Profitable",
+    "title": "Trading Calendar"
+  },
   "export": {
     "button": "Export CSV",
     "preparing": "Preparing…"
@@ -24,6 +29,10 @@
     "symbol": "Symbol",
     "title": "Trade history"
   },
+  "indicators": {
+    "rsi": "RSI (14)",
+    "title": "Technical Indicators"
+  },
   "performance": {
     "benchmark": "Benchmark",
     "period": "period",
@@ -32,5 +41,14 @@
   },
   "portfolio": {
     "title": "Portfolio mix"
+  },
+  "symbolStats": {
+    "best": "Best Performer",
+    "filled": "Filled",
+    "orders": "Orders",
+    "pnl": "P&L",
+    "symbol": "Symbol",
+    "title": "Symbol Statistics",
+    "winRate": "Win Rate"
   }
 }

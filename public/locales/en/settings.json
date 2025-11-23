@@ -1,5 +1,40 @@
 {
-	"appearance": "Appearance",
-	"watchlist": "Watchlist",
-	"pwa": "PWA & Alerts"
+	"title": "Settings",
+	"subtitle": "Customize your trading experience",
+	"appearance": {
+		"title": "Appearance & Language",
+		"description": "Customize theme and language",
+		"theme": "Theme",
+		"language": "Language",
+		"defaultRoute": "Default Route"
+	},
+	"watchlist": {
+		"title": "Watchlist",
+		"description": "Manage symbols for real-time monitoring",
+		"empty": "No symbols in watchlist",
+		"placeholder": "Enter symbol (e.g., AAPL)",
+		"add": "Add"
+	},
+	"alerts": {
+		"title": "Price Alerts",
+		"description": "Set up price notifications for your symbols",
+		"empty": "No alerts configured",
+		"symbolPlaceholder": "Symbol",
+		"pricePlaceholder": "Price",
+		"direction": "Direction",
+		"add": "Add Alert"
+	},
+	"pwa": {
+		"title": "PWA & Notifications",
+		"description": "Configure offline mode and push notifications",
+		"offline": "Offline Mode",
+		"offlineDescription": "Enable service worker for offline functionality",
+		"enableOffline": "Enable",
+		"pushNotifications": "Push Notifications",
+		"pushDescription": "Receive browser notifications for alerts",
+		"enable": "Enable",
+		"disable": "Disable",
+		"queuedOrders": "{{count}} order(s) queued for sync",
+		"sync": "Sync Now"
+	}
 }

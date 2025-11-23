@@ -4,6 +4,7 @@ import { useTheme } from "app/providers/ThemeProvider";
 import { AppRouter } from "app/providers/router";
 import { Navbar } from "widgets/Navbar";
 import { Sidebar } from "widgets/Sidebar";
+import { OfflineIndicator } from "shared/ui/OfflineIndicator";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserInited, userActions } from "entities/User";
 import { PageLoader } from "widgets/PageLoader/PageLoader";
@@ -38,6 +39,7 @@ function App() {
 					<Sidebar />
 					<AppRouter />
 				</div>
+				<OfflineIndicator />
 			</Suspense>
 		</div>
 	);

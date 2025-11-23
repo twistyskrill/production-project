@@ -37,12 +37,9 @@ export const Button = memo((props: ButtonProps) => {
 		...otherProps
 	} = props;
 
-	// Отладка: проверяем, загружен ли CSS модуль
-	if (__IS_DEV__) {
-		console.log("Button cls:", cls);
-		if (!cls) {
-			console.warn("Button.module.scss не загружен!");
-		}
+	// Проверяем, загружен ли CSS модуль (только предупреждение, без логирования)
+	if (__IS_DEV__ && !cls) {
+		console.warn("Button.module.scss не загружен!");
 	}
 
 	const mods: Mods = {
@@ -54,10 +51,6 @@ export const Button = memo((props: ButtonProps) => {
 
 	const buttonClassName = cls?.Button || "";
 	const finalClassName = classNames(buttonClassName, mods, [className]);
-
-	if (__IS_DEV__) {
-		console.log("Button className:", finalClassName);
-	}
 
 	return (
 		<button

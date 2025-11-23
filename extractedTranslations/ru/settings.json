@@ -1,0 +1,40 @@
+{
+  "alerts": {
+    "add": "add",
+    "description": "description",
+    "direction": "direction",
+    "empty": "empty",
+    "pricePlaceholder": "pricePlaceholder",
+    "symbolPlaceholder": "symbolPlaceholder",
+    "title": "title"
+  },
+  "appearance": {
+    "defaultRoute": "defaultRoute",
+    "description": "description",
+    "language": "language",
+    "theme": "theme",
+    "title": "title"
+  },
+  "pwa": {
+    "description": "description",
+    "disable": "disable",
+    "enable": "enable",
+    "enableOffline": "enableOffline",
+    "offline": "offline",
+    "offlineDescription": "offlineDescription",
+    "pushDescription": "pushDescription",
+    "pushNotifications": "pushNotifications",
+    "queuedOrders": "queuedOrders",
+    "sync": "sync",
+    "title": "title"
+  },
+  "subtitle": "subtitle",
+  "title": "title",
+  "watchlist": {
+    "add": "add",
+    "description": "description",
+    "empty": "empty",
+    "placeholder": "placeholder",
+    "title": "title"
+  }
+}

@@ -1,25 +1,79 @@
 .TerminalPage {
 	display: grid;
-	grid-template-columns: 400px 1fr;
-	gap: 24px;
-	padding: 24px;
-	min-height: calc(100vh - var(--navbar-height));
-	height: 100%;
+	grid-template-columns: 320px 450px 1fr;
+	gap: 20px;
+	width: 100%;
 	box-sizing: border-box;
+	align-items: start;
+	height: fit-content;
+
+	@media (max-width: 1600px) {
+		grid-template-columns: 280px 420px 1fr;
+	}
+
+	@media (max-width: 1400px) {
+		grid-template-columns: 1fr 1fr;
+		grid-template-areas:
+			"orderBook center"
+			"right right";
+
+		.orderBookColumn {
+			grid-area: orderBook;
+		}
+
+		.centerColumn {
+			grid-area: center;
+		}
+
+		.rightColumn {
+			grid-area: right;
+		}
+	}
+
+	@media (max-width: 1024px) {
+		grid-template-columns: 1fr;
+		grid-template-areas:
+			"center"
+			"orderBook"
+			"right";
+
+		.orderBookColumn {
+			grid-area: orderBook;
+		}
+
+		.centerColumn {
+			grid-area: center;
+		}
+
+		.rightColumn {
+			grid-area: right;
+		}
+	}
 }
 
-.leftColumn {
+.orderBookColumn {
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
-	height: 100%;
-	min-height: 0;
+	width: 100%;
+	min-width: 0;
+	height: fit-content;
+}
+
+.centerColumn {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	width: 100%;
+	min-width: 0;
+	height: fit-content;
 }
 
 .rightColumn {
-	display: grid;
-	grid-template-rows: 1fr auto;
+	display: flex;
+	flex-direction: column;
 	gap: 20px;
-	height: 100%;
-	min-height: 0;
+	width: 100%;
+	min-width: 0;
+	height: fit-content;
 }

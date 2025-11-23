@@ -1,0 +1,40 @@
+{
+  "alerts": {
+    "add": "Add Alert",
+    "description": "Set up price notifications for your symbols",
+    "direction": "Direction",
+    "empty": "No alerts configured",
+    "pricePlaceholder": "Price",
+    "symbolPlaceholder": "Symbol",
+    "title": "Price Alerts"
+  },
+  "appearance": {
+    "defaultRoute": "Default Route",
+    "description": "Customize theme and language",
+    "language": "Language",
+    "theme": "Theme",
+    "title": "Appearance & Language"
+  },
+  "pwa": {
+    "description": "Configure offline mode and push notifications",
+    "disable": "Disable",
+    "enable": "Enable",
+    "enableOffline": "Enable",
+    "offline": "Offline Mode",
+    "offlineDescription": "Enable service worker for offline functionality",
+    "pushDescription": "Receive browser notifications for alerts",
+    "pushNotifications": "Push Notifications",
+    "queuedOrders": "{{count}} order(s) queued for sync",
+    "sync": "Sync Now",
+    "title": "PWA & Notifications"
+  },
+  "subtitle": "Customize your trading experience",
+  "title": "Settings",
+  "watchlist": {
+    "add": "Add",
+    "description": "Manage symbols for real-time monitoring",
+    "empty": "No symbols in watchlist",
+    "placeholder": "Enter symbol (e.g., AAPL)",
+    "title": "Watchlist"
+  }
+}

@@ -1,29 +1,233 @@
 .SettingsPage {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 24px;
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+}
+
+.header {
+	margin-bottom: 8px;
+}
+
+.content {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-	gap: 16px;
+	grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+	gap: 24px;
+
+	@media (max-width: 768px) {
+		grid-template-columns: 1fr;
+	}
 }
 
 .card {
-	border: 1px solid rgba(255, 255, 255, 0.06);
+	background: var(--card-bg);
+	border: 1px solid rgba(255, 255, 255, 0.08);
 	border-radius: 16px;
-	padding: 16px;
-	display: flex;
-	flex-direction: column;
-	gap: 12px;
+	padding: 24px;
+	transition: all 0.3s ease;
+	backdrop-filter: blur(10px);
+	box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+
+	&:hover {
+		border-color: rgba(0, 211, 149, 0.2);
+		box-shadow: 0 8px 32px rgba(0, 211, 149, 0.1);
+		transform: translateY(-2px);
+	}
 }
 
-.watchlist {
-	display: flex;
-	flex-direction: column;
-	gap: 8px;
+.cardHeader {
+	margin-bottom: 20px;
+	padding-bottom: 16px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.watchlistItem {
+.cardContent {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.settingRow {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 8px;
+	gap: 16px;
+	padding: 12px 0;
+
+	@media (max-width: 768px) {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+}
+
+.settingInfo {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	flex: 1;
+}
+
+.label {
+	font-weight: 600;
+	font-size: 14px;
+	color: var(--primary-color);
+}
+
+.settingDescription {
+	font-size: 12px;
+	color: rgba(255, 255, 255, 0.6);
+}
+
+.settingAction {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.list {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	max-height: 300px;
+	overflow-y: auto;
+	padding-right: 8px;
+
+	&::-webkit-scrollbar {
+		width: 6px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: rgba(255, 255, 255, 0.05);
+		border-radius: 3px;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: rgba(255, 255, 255, 0.2);
+		border-radius: 3px;
+
+		&:hover {
+			background: rgba(255, 255, 255, 0.3);
+		}
+	}
+}
+
+.listItem {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 12px 16px;
 	background: rgba(255, 255, 255, 0.03);
-	border-radius: 8px;
+	border: 1px solid rgba(255, 255, 255, 0.06);
+	border-radius: 12px;
+	transition: all 0.2s ease;
+
+	&:hover {
+		background: rgba(255, 255, 255, 0.05);
+		border-color: rgba(0, 211, 149, 0.3);
+	}
+}
+
+.listItemContent {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	flex: 1;
+}
+
+.symbol {
+	font-weight: 600;
+	font-size: 16px;
+	color: var(--primary-color);
+}
+
+.badge {
+	display: inline-block;
+	padding: 2px 8px;
+	background: rgba(0, 211, 149, 0.2);
+	border-radius: 4px;
+	font-size: 11px;
+	color: #00d395;
+}
+
+.alertInfo {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.alertCondition {
+	font-size: 14px;
+	color: rgba(255, 255, 255, 0.7);
+}
+
+.alertStatus {
+	display: flex;
+	align-items: center;
+}
+
+.statusBadge {
+	display: inline-block;
+	padding: 4px 12px;
+	border-radius: 12px;
+	font-size: 12px;
+	font-weight: 500;
+
+	&.active {
+		background: rgba(0, 211, 149, 0.2);
+		color: #00d395;
+	}
+
+	&.inactive {
+		background: rgba(255, 255, 255, 0.1);
+		color: rgba(255, 255, 255, 0.5);
+	}
+}
+
+.alertActions {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+}
+
+.emptyState {
+	padding: 32px;
+	text-align: center;
+	color: rgba(255, 255, 255, 0.5);
+	font-size: 14px;
+}
+
+.addForm {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	margin-top: 8px;
+	padding-top: 16px;
+	border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.alertFormRow {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 12px;
+
+	@media (max-width: 768px) {
+		grid-template-columns: 1fr;
+	}
+}
+
+.queueStatus {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 16px;
+	background: rgba(242, 201, 76, 0.1);
+	border: 1px solid rgba(242, 201, 76, 0.3);
+	border-radius: 12px;
+	margin-top: 8px;
+}
+
+.queueInfo {
+	flex: 1;
 }

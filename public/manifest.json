@@ -3,21 +3,48 @@
 	"short_name": "Quantflow",
 	"start_url": "/terminal",
 	"display": "standalone",
+	"orientation": "portrait-primary",
 	"background_color": "#050914",
 	"theme_color": "#00d395",
-	"description": "Realtime trading sandbox with mock data",
+	"description": "Realtime trading sandbox with mock data, offline support, and push notifications",
+	"scope": "/",
 	"icons": [
 		{
 			"src": "/icons/quantflow-192.svg",
 			"sizes": "192x192",
 			"type": "image/svg+xml",
-			"purpose": "any"
+			"purpose": "any maskable"
 		},
 		{
 			"src": "/icons/quantflow-512.svg",
 			"sizes": "512x512",
 			"type": "image/svg+xml",
-			"purpose": "any"
+			"purpose": "any maskable"
 		}
-	]
+	],
+	"categories": ["finance", "business"],
+	"shortcuts": [
+		{
+			"name": "Terminal",
+			"short_name": "Terminal",
+			"description": "Open trading terminal",
+			"url": "/terminal",
+			"icons": [{ "src": "/icons/quantflow-192.svg", "sizes": "192x192" }]
+		},
+		{
+			"name": "Analytics",
+			"short_name": "Analytics",
+			"description": "View analytics dashboard",
+			"url": "/analytics",
+			"icons": [{ "src": "/icons/quantflow-192.svg", "sizes": "192x192" }]
+		}
+	],
+	"share_target": {
+		"action": "/terminal",
+		"method": "GET",
+		"params": {
+			"title": "symbol",
+			"text": "quantity"
+		}
+	}
 }
